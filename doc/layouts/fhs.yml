@@ -1,0 +1,41 @@
+Directories:
+   Base:
+      bin:
+         name: bin
+         chmod: 755
+         user: root
+         group: root
+      htdocs:
+         name: var/htdocs
+         chmod: 755
+         user: <%= ServerControl::Args->get->{'user'} %>
+         group: <%= ServerControl::Args->get->{'group'} %>
+   Configuration:
+         name: etc
+         chmod: 755
+         user: <%= ServerControl::Args->get->{'user'} %>
+         group: root
+   Runtime:
+      pid:
+         name: var/run
+         chmod: 755
+         user: <%= ServerControl::Args->get->{'user'} %>
+         group: root
+      log:
+         name: var/log
+         chmod: 755
+         user: <%= ServerControl::Args->get->{'user'} %>
+         group: <%= ServerControl::Args->get->{'group'} %>
+Files:
+   Exec:
+      aped:
+         name: bin/aped-<%= __PACKAGE__->get_name %>
+         link: <%= ServerControl::Schema->get('aped') %>
+   Base:
+      libs:
+         name: lib
+         link: <%= ServerControl::Schema->get('lib') %>
+   Configuration:
+      conf:
+         name: etc/aped.conf
+         call: <% sub { ServerControl::Template->parse(@_);
