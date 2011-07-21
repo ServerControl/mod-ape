@@ -43,7 +43,6 @@ sub start {
 	my ($class) = @_;
 
 	my ($name, $path)	= ($class->get_name, $class->get_path);
-	my $user		= ServerControl::Args->get->{'user'};
 
 	my $exec_file		= ServerControl::FsLayout->get_file("Exec", "aped");
 	my $conf_file		= ServerControl::FsLayout->get_file("Configuration", "conf");
