@@ -13,8 +13,8 @@ use ServerControl::Schema;
 use base qw(ServerControl::Schema::Module);
 
 __PACKAGE__->register(
-	'aped'		=> '/opt/sc/opt/ape-1.0/usr/local/bin/aped',
-	'lib'		=> '/opt/sc/opt/ape-1.0/usr/lib/ape',
+	'aped'		=> '/usr/bin/aped',
+	'lib'		=> '/usr/lib/ape',
 );
 
 1;
